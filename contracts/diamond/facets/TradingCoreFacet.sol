@@ -75,7 +75,7 @@ contract TradingCoreFacet is ITradingCore, ITradingCoreError, OnlySelf {
                 // slippage = (longQty + qty) * price / depthAboveUsd
                 slippage = (pairQty.longQty + qty) * marketPrice * 1e4 / sc.onePercentDepthAboveUsd + 1;
             } else if (sc.slippageType == SlippageType.NET_POSITION && pairQty.longQty + qty >= pairQty.shortQty) {
-                // slippage = max((longQty + qty - shortQty) * price / depthAboveUsd + 1, slippageLongP)
+                // slippage = max((longQty + qty - shortQty) * price / onePercentDepthBelowUsd + 1, slippageLongP)
                 uint256 s = (pairQty.longQty + qty - pairQty.shortQty) * marketPrice * 1e4 / sc.onePercentDepthAboveUsd + 1;
                 slippage = s > sc.slippageLongP ? s : sc.slippageLongP;
             } else if (sc.slippageType == SlippageType.THRESHOLD && (pairQty.longQty + qty) * marketPrice >= sc.longThresholdUsd) {
@@ -89,7 +89,7 @@ contract TradingCoreFacet is ITradingCore, ITradingCoreError, OnlySelf {
                 // slippage = (shortQty + qty) * price / depthBelowUsd
                 slippage = (pairQty.shortQty + qty) * marketPrice * 1e4 / sc.onePercentDepthBelowUsd + 1;
             } else if (sc.slippageType == SlippageType.NET_POSITION && pairQty.shortQty + qty >= pairQty.longQty) {
-                // slippage = max((shortQty + qty - longQty) * price / depthAboveUsd + 1, slippageLongP)
+                // slippage = max((shortQty + qty - longQty) * price / onePercentDepthBelowUsd + 1, slippageLongP)
                 uint256 s = (pairQty.shortQty + qty - pairQty.longQty) * marketPrice * 1e4 / sc.onePercentDepthBelowUsd + 1;
                 slippage = s > sc.slippageShortP ? s : sc.slippageShortP;
             } else if (sc.slippageType == SlippageType.THRESHOLD && (pairQty.shortQty + qty) * marketPrice >= sc.shortThresholdUsd) {

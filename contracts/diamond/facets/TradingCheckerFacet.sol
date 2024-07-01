@@ -287,7 +287,7 @@ contract TradingCheckerFacet is ITradingChecker {
         // The notional value of the position must be less than or equal to the maximum notional value allowed by pair
         require(notionalUsd <= lms[lms.length - 1].notionalUsd, "Notional value too large");
 
-        // find corresponding lerverage config
+        // find corresponding leverage config
         IPairsManager.LeverageMargin memory lm = _marginLeverage(lms, notionalUsd);
         
         uint openFeeUsd = notionalUsd * pair.feeConfig.openFeeP / 1e4;

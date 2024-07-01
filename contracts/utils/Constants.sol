@@ -32,9 +32,9 @@ library Constants {
     bytes32 constant MONITOR_ROLE = keccak256("MONITOR_ROLE");
 
     /*-------------------------------- Decimals --------------------------------*/
-    uint8 constant public PRICE_DECIMALS = 8;
-    uint8 constant public QTY_DECIMALS = 10;
-    uint8 constant public USD_DECIMALS = 18;
+    //uint8 constant public PRICE_DECIMALS = 8;
+    //uint8 constant public QTY_DECIMALS = 10;
+    //uint8 constant public USD_DECIMALS = 18;
 
     uint16 constant public BASIS_POINTS_DIVISOR = 1e4;
     uint16 constant public MAX_LEVERAGE = 1e3;
