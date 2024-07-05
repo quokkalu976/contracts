@@ -80,7 +80,7 @@ contract LpManagerFacet is ReentrancyGuard, Pausable, ILpManager {
         ILp(LP()).burnFrom(account, lpAmount);
         IVault(address(this)).decrease(tokenOut, amountOut);
         tokenOut.transfer(receiver, amountOut);
-        emit burnLp(account, receiver, tokenOut, lpAmount, amountOut);
+        emit BurnLp(account, receiver, tokenOut, lpAmount, amountOut);
     }
 
     function addFreeBurnWhitelist(address account) external override {

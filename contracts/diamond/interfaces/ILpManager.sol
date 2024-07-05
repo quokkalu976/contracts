@@ -4,7 +4,7 @@ pragma solidity ^0.8.19;
 interface ILpManager {
 
     event MintLp(address indexed account, address indexed tokenIn, uint256 amountIn, uint256 lpOut);
-    event burnLp(address indexed account, address indexed receiver, address indexed tokenOut, uint256 lpAmount, uint256 amountOut);
+    event BurnLp(address indexed account, address indexed receiver, address indexed tokenOut, uint256 lpAmount, uint256 amountOut);
     event MintFee(
         address indexed account, address indexed tokenIn, uint256 amountIn,
         uint256 tokenInPrice, uint256 mintFeeUsd, uint256 lpAmount
